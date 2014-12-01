@@ -6,14 +6,18 @@ from BeautifulSoup import BeautifulSoup
 import sys
 import csv
 
-if len(sys.argv)==1:
+if not sys.stdin.isatty():
+  fin = sys.stdin
+elif len(sys.argv)==1:
   print "Syntax: %s <HTML FILE>"
   print "Reads in an HTML and attempts to convert all tables into"
   print "CSV files."
   sys.exit(-1)
+else:
+  fin = open(sys.argv[1],'r')
 
 print "Opening file"
-fin  = open(sys.argv[1],'r').read()
+fin  = fin.read()
 
 print "Parsing file"
 soup = BeautifulSoup(fin,convertEntities=BeautifulSoup.HTML_ENTITIES)
