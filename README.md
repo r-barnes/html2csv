@@ -10,3 +10,8 @@ Examples
     ./html2csv.py webpage.html
     
     cat webpage.html | ./html2csv.py
+
+Credits
+-------
+
+Fernando Ferreira provided changes that updated the script to Python3.
